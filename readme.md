@@ -7,6 +7,8 @@ Basic API for CRUD operation with mongodb and Fast API
 ## Project setup
 
 ```
+./intall.sh to setup local environment
+
 pip install -r requirements.txt
 ```
 
