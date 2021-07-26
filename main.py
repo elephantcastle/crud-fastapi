@@ -43,14 +43,14 @@ async def read_item(item_id: str):
 @app.post("/item/{item_id}")
 async def save_item(item_id: str, item: Item):
     result = list(fastapidb["items_collection"].insert_one(
-        {"text": Item.text}))
+        {"text": item.text}))
     return "Insert a single document: inserted id: " + str(result.inserted_id) + ", acknowledged: " + str(result.acknowledged)
 
 
 @app.put("/item/{item_id}")
 async def modify_item(item_id: str, item: Item):
     result = list(fastapidb["items_collection"].update_one(
-        {"_id": ObjectId(item_id)}, {"$set": {"text": Item.text}}))
+        {"_id": ObjectId(item_id)}, {"$set": {"text": item.text}}))
     return "Upsert one: acknowledged: " + str(result.acknowledged) + ", matched_count: " + str(result.matched_count) + ", modified_count: " + str(result.modified_count) + ", upserted_id: " + str(result.upserted_id) + ", raw_result: " + str(result.raw_result)
 
 
